@@ -1,0 +1,25 @@
+.sass-cache
+.tmp
+node_modules
+npm-debug.log
+bower_components
+coverage
+docs
+
+# OS X
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# KDE
+.directory
+
+# Vim and other editors
+.*.sw[a-z]
+*.un~
+Session.vim
+/nbproject
+.idea
+.settings
+.project
+.buildpath
