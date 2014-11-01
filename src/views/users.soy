@@ -1,0 +1,72 @@
+{namespace users autoescape="strict"}
+/**
+ * Sign in template
+ */
+{template .logIn}
+<div class="row">
+    <div class="large-8 columns">
+        <iframe src="http://ghbtns.com/github-btn.html?user=henvic&repo=social-network&type=fork&size=large&count=true"
+        allowtransparency="true"
+        frameborder="0"
+        scrolling="0"
+        width="170"
+        height="30"></iframe>
+    </div>
+    <div class="large-4 columns clearfix">
+        <a role="button" aria-label="Sign in" href="" class="button right" id="sign-in-button">
+            <i class="fi-torsos-all"></i> Sign in with your email
+        </a>
+    </div>
+</div>
+{/template}
+
+/**
+ * Sign out template
+ * @param loggedUser Logged user object
+ */
+{template .logInBar}
+<div class="row">
+    <div class="large-6 columns">
+        <img src="http://avatars.io/email/{let $foo kind="text"}{$loggedUser.email |escapeUri}{/let}{$foo}?size=large" width="64" alt="user's avatar" /> {$loggedUser.email}
+    </div>
+    <div class="large-6 columns clearfix">
+        <form method="POST" action="/auth/logout" class="right">
+            <button aria-label="Sign out" class="alert sign-out-button" id="sign-out-button">
+                <i class="fi-stop"></i> Sign out
+            </button>
+        </form>
+    </div>
+</div>
+{/template}
+
+/**
+ * Sign up template
+ */
+{template .signUp}
+<h2>Sign Up</h2>
+<form class="panel callout">
+    <div class="row">
+        <div class="large-12 columns">
+            <label>Full Name
+            <input type="text" />
+            </label>
+        </div>
+        <div class="large-12 columns">
+            <div class="row collapse">
+                <label>Password</label>
+                <div class="small-12 columns">
+                    <input type="password" />
+                </div>
+            </div>
+        </div>
+        <div class="large-12 columns">
+            <label>Email
+            <input type="text" />
+            </label>
+        </div>
+        <div class="large-12 columns">
+            <button type="submit">Sign Up</button>
+        </div>
+    </div>
+</form>
+{/template}
