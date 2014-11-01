@@ -1,0 +1,84 @@
+{namespace home autoescape="strict"}
+
+/**
+ * Story form
+ */
+{template .storyForm}
+<form id="story-new">
+    <div class="row">
+        <div class="large-12 columns">
+            <textarea class="story-new-textarea" id="story-new-textarea" placeholder="What's on your mind?" maxlength="150"></textarea>
+            <button type="submit">Post</button>
+        </div>
+    </div>
+</form>
+{/template}
+
+/**
+ * Story template.
+ * @param user User object
+ * @param message Message object
+ */
+{template .story}
+<div class="row story" id="message-{let $foo kind="text"}{$message.id |escapeHtml}{/let}{$foo}">
+    <div class="large-4 columns">
+        <div class="story-user">
+            <img src="http://avatars.io/email/{let $foo kind="text"}{$user.email |escapeUri}{/let}{$foo}?size=large" width="64" alt="user's avatar" /> {$user.email}
+        </div>
+    </div>
+    <div class="large-8 columns">
+        <p>{$message.body}</p>
+    </div>
+</div>
+{/template}
+
+/**
+ * Unsigned-in template.
+ * @param loggedUser Logged user object
+ */
+{template .default}
+{call app.base data="all"}
+{param title kind="text"}social-network{/param}
+{param body kind="html"}
+<div class="row">
+    <div class="large-12 columns">
+    {if $loggedUser}
+    {call users.logInBar data="all" /}
+    {/if}
+
+    {if not $loggedUser}
+    {call users.logIn data="all" /}
+    {/if}
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Timeline</h1>
+        <div id="stories">
+        </div>
+        {if $loggedUser}
+        {call home.storyForm data="all" /}
+        {/if}
+    </div>
+</div>
+{/param}
+{/call}
+{/template}
+
+/**
+ * Shows a hello message.
+ * @param date The current data
+ */
+{template .hello}
+  Hello, it is {$date}!!!!!! :))
+{/template}
+
+/**
+ * Shows a hello message.
+ * @param date The current data
+ * @param screenName User screen name
+ */
+{template .main}
+  Hello, it is {$date}! Modified!!!!!!!!!!!
+  {msg desc="Hello / greeting"}Hello, {$screenName}!{/msg}
+{/template}
