@@ -1,0 +1,105 @@
+{namespace app autoescape="strict"}
+
+/**
+ * Menu
+ */
+{template .menu}
+<div class="icon-bar four-up">
+  <a class="item" aria-labelledby="#home-button" href="/">
+    <i class="fi-home"></i>
+    <label id="home-button">Home</label>
+  </a>
+  <a class="item" aria-labelledby="#pencil-button" href="/write">
+    <i class="fi-clipboard-pencil"></i>
+    <label id="pencil-button">Write</label>
+  </a>
+  <a class="item" href="/messages">
+    <i class="fi-mail" aria-labelledby="#mail-button"></i>
+    <label id="mail-button">Messages</label>
+  </a>
+  <a class="item" href="/account">
+    <i class="fi-wrench" aria-labelledby="#account-button"></i>
+    <label id="account-button">Account</label>
+  </a>
+</div>
+{/template}
+
+/**
+ * Shows a hello message.
+ *
+ * @param title Page title
+ * @param body Body content
+ * @param sessionToken CSRF protection hash
+ */
+{template .base}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {if $title}<title>{$title}</title>{/if}
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <base href="/" />
+    <link rel="stylesheet" href="styles/all.css">
+    <script src="components/modernizr/modernizr.js"></script>
+</head>
+<body>
+    {call .menu data="all" /}
+    {$body}
+    <script src="components/foundation/js/vendor/jquery.js"></script>
+    <script src="components/foundation/js/vendor/fastclick.js"></script>
+    <script src="components/foundation/js/foundation.js"></script>
+    <script src="components/sweetalert/lib/sweet-alert.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        jQuery(document).foundation();
+        var App = new Object();
+        App.token = '{$sessionToken}';
+    </script>
+    <script src="scripts/all.js"></script>
+    <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+    </body>
+</html>
+{/template}
+
+/**
+ * 404 Not found
+ *
+ * @param verb
+ * @param url
+ */
+{template .notFound}
+{call .base data="all"}
+{param title kind="text"}404 Not Found{/param}
+{param body kind="html"}
+<div class="row">
+    <div class="large-12 columns text-center">
+        <h1>404 Not Found</h1>
+        <img src="/images/404.svg" width="50%" title="404 Page not found." />
+        <p>You've tried to <b>{$verb} {$url}</b>.</p>
+    </div>
+</div>
+{/param}
+{/call}
+{/template}
+
+/**
+ * 403 Forbidden
+ *
+ * @param verb
+ * @param url
+ */
+{template .forbidden}
+{call .base data="all"}
+{param title kind="text"}403 Forbidden{/param}
+{param body kind="html"}
+<div class="row">
+    <div class="large-12 columns text-center">
+        <h1>403 Forbidden</h1>
+        <img src="/images/403.svg" width="50%" title="403 Forbidden." />
+        <p>You've tried to <b>{$verb} {$url}</b>. Session expired, perhaps?</p>
+    </div>
+</div>
+{/param}
+{/call}
+{/template}
