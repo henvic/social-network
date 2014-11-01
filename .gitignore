@@ -5,6 +5,7 @@ npm-debug.log
 src/public/components
 coverage
 docs
+dist
 
 # OS X
 .DS_Store
