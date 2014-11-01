@@ -1,0 +1,14 @@
+# humanstxt.org/
+# This project is just an example and was created for a talk on web development.
+
+# TEAM
+
+  Henrique Vicente -- Software Engineer -- @henriquev
+
+# THANKS
+
+  Liferay
+
+# TECHNOLOGY COLOPHON
+
+  JS, HTML5, CSS3
