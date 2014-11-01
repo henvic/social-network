@@ -1,0 +1,25 @@
+// see ../components/foundation/scss/foundation/components/_settings.scss
+
+@import "../components/foundation/scss/normalize";
+@import "../components/foundation/scss/foundation";
+@import "../components/sweetalert/lib/sweet-alert";
+
+// Foundation icon fonts
+$fi-path: "../components/foundation-icon-fonts" !default;
+@import "../components/foundation-icon-fonts/_foundation-icons";
+
+$new-story-font-size: 1.3rem;
+
+.story-user {
+    border-left: 1rem solid $primary-color;
+}
+
+.story-new-textarea {
+    height: $new-story-font-size * 5;
+    font-size: $new-story-font-size;
+}
+
+.sign-out-button {
+    margin-left: 1.5rem;
+    margin-bottom: 0;
+}
