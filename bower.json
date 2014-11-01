@@ -1,0 +1,25 @@
+{
+  "name": "social-network",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Henrique Vicente <henriquevicente@gmail.com>"
+  ],
+  "description": "This is a tiny social network experiment.",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.15"
+  }
+}
