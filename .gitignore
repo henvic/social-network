@@ -2,7 +2,7 @@
 .tmp
 node_modules
 npm-debug.log
-bower_components
+src/public/components
 coverage
 docs
 
